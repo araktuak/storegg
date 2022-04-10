@@ -3,11 +3,16 @@ const Category = require('./model');
 module.exports={
     index: async(req, res) => {
         try {
-            res.render("admin/category/view_category.ejs");
+            const category = await Category.find();
+
+            res.render("admin/category/view_category.ejs", {
+                category: category
+            });
         } catch(err) {
             console.log(err);
         }
     },
+
     viewCreate: async(req, res) => {
         try {
             res.render("admin/category/create");
