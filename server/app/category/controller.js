@@ -32,5 +32,18 @@ module.exports={
         } catch(err) {
             console.log(err);
         }
+    },
+
+    viewEdit: async(req, res) => {
+        try {
+            const { id } = req.params;
+            const category = Category.findOne({_id: id});
+
+            res.render('admin/category/edit', {
+                category: category
+            })
+        } catch(err) {
+            console.log(err);
+        }
     }
 }
